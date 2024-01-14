@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html data-bs-theme="auto" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>HomePage</title>
+    <meta name="description" content="write description here">
+    <script>
+        (function() {
+
+            // JavaScript snippet handling Dark/Light mode switching
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+            const forcedTheme = document.documentElement.getAttribute('data-bss-forced-theme');
+
+            const getPreferredTheme = () => {
+
+                if (forcedTheme) return forcedTheme;
+
+                const storedTheme = getStoredTheme();
+                if (storedTheme) {
+                    return storedTheme;
+                }
+
+                const pageTheme = document.documentElement.getAttribute('data-bs-theme');
+
+                if (pageTheme) {
+                    return pageTheme;
+                }
+
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            }
+
+            setTheme(getPreferredTheme());
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitchers = [].slice.call(document.querySelectorAll('.theme-switcher'));
+
+                if (!themeSwitchers.length) return;
+
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
+                for (const themeSwitcher of themeSwitchers) {
+
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
+
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme();
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme());
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme());
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const theme = toggle.getAttribute('data-bs-theme-value');
+                            setStoredTheme(theme);
+                            setTheme(theme);
+                            showActiveTheme(theme);
+                        })
+                    })
+            });
+        })();
+    </script>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&amp;display=swap">
+    <link rel="stylesheet" href="../assets/css/Features-Image-images.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md">
+        <div class="container"><a class="navbar-brand" href="#">netflix&nbsp;<span>direct upload</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">send feedback</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">user</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="#">account</a><a class="dropdown-item" href="#">logout</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--End Navbar Comment Section-->
+    <!-- Start: 1 Row 2 Columns -->
+    <div class="container py-4 py-xl-5">
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-capitalize">my account</h4>
+                <div class="border border-1 rounded-2 p-1">
+                    <ul class="list-unstyled nav flex-column py-3">
+                        <li class="mb-2"><a class="text-capitalize fw-semibold link-dark text-decoration-none" href="#">account overview</a></li>
+                        <li class="mb-2"><a class="text-capitalize fw-semibold link-dark text-decoration-none" href="#">Users &amp; Roles</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div>
+                    <h3 class="text-capitalize text-dark">primary accounts details</h3>
+                    <div class="table-responsive py-2">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Account name</td>
+                                    <td>himanshu nishad</td>
+                                    <td><a class="text-decoration-none" href="#">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Account email</td>
+                                    <td>mail@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Account id</td>
+                                    <td>1222222</td>
+                                </tr>
+                                <tr>
+                                    <td>Password</td>
+                                    <td>*******</td>
+                                    <td><a class="text-decoration-none" href="#">Reset Password</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- End: 1 Row 2 Columns -->
+    <!--End Search Comment-->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

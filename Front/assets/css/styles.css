@@ -1,0 +1,104 @@
+body {
+  font-family: Lato, sans-serif;
+  background: rgb(249,249,249);
+}
+
+.navbar {
+  background: rgb(35,47,62);
+}
+
+.navbar-brand > span {
+  color: rgb(249,249,249);
+  font-weight: 300;
+}
+
+.navbar-brand {
+  color: rgb(17,110,148);
+  font-weight: 600;
+}
+
+.navbar-brand:hover {
+  color: inherit;
+}
+
+.navbar-nav > .nav-item > a {
+  color: rgb(157,166,163);
+  text-transform: capitalize;
+}
+
+.navbar-nav > .nav-item > a:hover {
+  color: rgb(249,249,249);
+}
+
+.dropdown-menu > .dropdown-item {
+  margin-top: 10px;
+  text-transform: capitalize;
+  color: #9da6a3;
+}
+
+.dropdown-menu > .dropdown-item:hover {
+  background-color: #116e94;
+  color: #f9f9f9;
+}
+
+.dropdown-menu {
+  border: none;
+  border-radius: 0px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+#hero-img {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+
+.btn-link {
+  background-color: rgb(255,216,20);
+  border-radius: 10px;
+}
+
+.btn-link {
+  text-decoration: none;
+  color: rgb(15,17,18);
+}
+
+.btn-link:hover {
+  background: rgb(255,206,30);
+}
+
+div > p {
+  color: rgb(86,92,89);
+}
+
+div > h4 {
+  color: rgb(15,17,17);
+}
+
+.card {
+  border: none;
+}
+
+.btn {
+  background: rgb(242,200,95);
+  color: rgb(0,0,49);
+  border-radius: 10px;
+  border: none;
+}
+
+.btn:hover {
+  background: rgb(242,200,115);
+}
+
+.btn.btn-link {
+  background: rgb(234,236,238);
+}
+
+div > h2 {
+  color: #232f3e;
+}
+
